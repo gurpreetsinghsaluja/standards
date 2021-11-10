@@ -1,0 +1,6 @@
+span {
+    color: white;
+}
+.button:focus ~ span {
+    all: initial;
+}
