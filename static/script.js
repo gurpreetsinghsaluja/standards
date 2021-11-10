@@ -52,7 +52,48 @@ fetch('/upload').then(response => response.json()).then(data => {
             var term = buttons[i].innerHTML;
             var difficulty = meters[i].getAttribute("value");
             var url_citation = urls[i].getAttribute("href");
+
+            fetch('/mod', {
+               method: "POST",
+               headers: {
+                   'Accept': 'application/json, text/plain, */*',
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                   "standards" : [{
+                       term : term,
+                       description : description,
+                       URL_citation: url_citation,
+                       difficulty: difficulty
+                   }]
+               })
+           });
+
             });
 
+        // task 3
+        spans[i].addEventListener('focusout', function() {
+             var description = spans[i].innerHTML;
+             var term = buttons[i].innerHTML;
+             var difficulty = meters[i].getAttribute("value");
+             var url_citation = urls[i].getAttribute("href");
+
+             fetch('/mod', {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "standards" : [{
+                        term : term,
+                        description : description,
+                        URL_citation: url_citation,
+                        difficulty: difficulty
+                    }]
+                })
+            });
+
+        });
     }
 });
